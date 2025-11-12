@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
+import com.example.tms.tasks.MaimActivity
 import com.example.tms.tasks.IntentActivity
 import kotlin.jvm.java
 
@@ -26,6 +27,12 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
             val intent = Intent(this, IntentActivity::class.java)
             intent.putExtra("key1", "Hello, Second Activity")
+            startActivity(intent)
+        }
+
+        val button2 = findViewById<Button>(R.id.buttonTask2)
+        button2.setOnClickListener {
+            val  intent = Intent(this, MaimActivity::class.java)
             startActivity(intent)
         }
 
