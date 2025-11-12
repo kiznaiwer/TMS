@@ -21,8 +21,12 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".tasks.Activity15"
+        <activity android:name=".tasks.IntentActivity"
             android:exported="true"/>
+
+        <activity android:name=".tasks.FragActivity"
+            android:exported="true"/>
+
     </application>
 
 </manifest>

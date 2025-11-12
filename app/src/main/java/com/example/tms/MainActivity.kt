@@ -7,7 +7,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.tms.tasks.Activity15
+import androidx.fragment.app.Fragment
+import com.example.tms.tasks.IntentActivity
 import kotlin.jvm.java
 
 class MainActivity : AppCompatActivity() {
@@ -23,9 +24,18 @@ class MainActivity : AppCompatActivity() {
 
         val button = findViewById<Button>(R.id.buttonTask)
         button.setOnClickListener {
-            val intent = Intent(this, Activity15::class.java)
+            val intent = Intent(this, IntentActivity::class.java)
             intent.putExtra("key1", "Hello, Second Activity")
             startActivity(intent)
+        }
+
+        fun addFragment(fragment: Fragment) {
+            val fragmentManager = supportFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+
+            fragmentTransaction.replace(R.id.fragment_container, fragment)
+
+            fragmentTransaction.commit()
         }
     }
 }
