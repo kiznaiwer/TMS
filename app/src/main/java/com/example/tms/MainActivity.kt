@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.example.tms.tasks.MaimActivity
 import com.example.tms.tasks.IntentActivity
 import kotlin.jvm.java
+import com.example.tms.task2.MaikActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +34,12 @@ class MainActivity : AppCompatActivity() {
         val button2 = findViewById<Button>(R.id.buttonTask2)
         button2.setOnClickListener {
             val  intent = Intent(this, MaimActivity::class.java)
+            startActivity(intent)
+        }
+
+        val button3 = findViewById<Button>(R.id.buttonTassk3)
+        button3.setOnClickListener {
+            val intent = Intent(this, MaikActivity::class.java)
             startActivity(intent)
         }
 

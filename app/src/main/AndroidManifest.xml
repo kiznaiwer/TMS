@@ -25,7 +25,8 @@
             android:exported="true"/>
         <activity android:name=".tasks.MaimActivity"
             android:exported="true"/>
-
+        <activity android:name=".task2.MaikActivity"
+            android:exported="true"/>
 
     </application>
 
