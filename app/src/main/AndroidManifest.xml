@@ -29,6 +29,8 @@
             android:exported="true"/>
         <activity android:name=".task2.MaisActivity"
             android:exported="true"/>
+        <activity android:name=".task3.MaicActivity"
+            android:exported="true"/>
 
     </application>
 

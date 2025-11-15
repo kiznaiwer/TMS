@@ -1,4 +1,4 @@
-package com.example.tms.task2
+package com.example.tms.task1
 
 import android.os.Bundle
 import android.view.LayoutInflater
