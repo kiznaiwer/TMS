@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TMS">
         <activity
-            android:name=".UI.MainActivity"
+            android:name="MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +21,5 @@
             </intent-filter>
         </activity>
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
