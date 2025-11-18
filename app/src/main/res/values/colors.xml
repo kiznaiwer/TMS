@@ -2,4 +2,24 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="md_primary">#2962FF</color>
+    <color name="md_primary_dark">#0039CB</color>
+    <color name="md_on_primary">#FFFFFF</color>
+
+    <color name="md_secondary">#FF6D00</color>
+    <color name="md_on_secondary">#FFFFFF</color>
+
+
+    <color name="md_background">#F5F7FA</color>
+    <color name="md_on_background">#212121</color>
+
+
+    <color name="md_surface">#FFFFFF</color>
+    <color name="md_on_surface">#212121</color>
+
+
+
+
+
+
 </resources>
