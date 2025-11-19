@@ -24,6 +24,8 @@ class Adapter(
 
     override fun getItemCount(): Int = items.size
 
+    fun isEmpty(): Boolean = items.isEmpty()
+
     fun addItem(item: Item) {
         items.add(item)
         notifyItemInserted(items.size - 1)
