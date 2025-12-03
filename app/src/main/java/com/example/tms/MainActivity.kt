@@ -17,13 +17,19 @@ import com.example.tms.databinding.ActivityMainBinding
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlin.jvm.Throws
 
 class MainActivity: AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
+    private var buttonUpdateJob: Job? = null
+
+    private var live = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -32,12 +38,11 @@ class MainActivity: AppCompatActivity() {
         updateTextViewAuto()
 
         binding.btnClck.setOnClickListener {
-            updateTextViewButton()
+            lookLive()
         }
-
-        binding.openSumm.setOnClickListener {
-            number1000()
-        }
+//        binding.openSumm.setOnClickListener {
+//            number1000()
+//        }
     }
 
 
@@ -51,24 +56,49 @@ class MainActivity: AppCompatActivity() {
     }
 
     private fun updateTextViewButton(){
-        lifecycleScope.launch {
+        live = true
+        binding.btnClck.text = "Stop"
+        buttonUpdateJob = lifecycleScope.launch {
             for (i in 10 downTo 1){
                 delay(1000)
                 binding.textView.text = "$i"
             }
+            withContext(Dispatchers.Main) {
+                live = false
+                binding.btnClck.text = "Click"
+                binding.textView.text = "Готово"
+            }
         }
     }
 
-    private fun number1000(){
-        binding.summ.text = "Вычисляем сумму"
-        val result = lifecycleScope.async(Dispatchers.Default) {
-            delay(3000)
-            var sum = 0
-            for (i in 1..1000){
-                sum += (1..10).random()
-            }
-            binding.summ.text = sum.toString()
-        }
+    private fun stopUpdateTextViewButton(){
+        live = false
+        buttonUpdateJob?.cancel()
+        buttonUpdateJob = null
+        binding.textView.text = "отменено"
+        binding.btnClck.text = "Click"
+    }
+
+    private fun lookLive(){
+        if (live) stopUpdateTextViewButton()
+        else updateTextViewButton()
+    }
+
+//    private fun number1000(){
+//        binding.summ.text = "Вычисляем сумму"
+//        val result = lifecycleScope.async(Dispatchers.Default) {
+//            delay(3000)
+//            var sum = 0
+//            for (i in 1..1000){
+//                sum += (1..10).random()
+//            }
+//            binding.summ.text = sum.toString()
+//        }
+//    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        buttonUpdateJob?.cancel()
     }
 
 }
