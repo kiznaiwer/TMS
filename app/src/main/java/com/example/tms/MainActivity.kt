@@ -15,7 +15,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tms.R
 import com.example.tms.databinding.ActivityMainBinding
 import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.jvm.Throws
@@ -31,6 +33,10 @@ class MainActivity: AppCompatActivity() {
 
         binding.btnClck.setOnClickListener {
             updateTextViewButton()
+        }
+
+        binding.openSumm.setOnClickListener {
+            number1000()
         }
     }
 
@@ -50,6 +56,18 @@ class MainActivity: AppCompatActivity() {
                 delay(1000)
                 binding.textView.text = "$i"
             }
+        }
+    }
+
+    private fun number1000(){
+        binding.summ.text = "Вычисляем сумму"
+        val result = lifecycleScope.async(Dispatchers.Default) {
+            delay(3000)
+            var sum = 0
+            for (i in 1..1000){
+                sum += (1..10).random()
+            }
+            binding.summ.text = sum.toString()
         }
     }
 
