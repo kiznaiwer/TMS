@@ -1,5 +1,6 @@
 package com.example.tms
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -38,6 +39,46 @@ class MainActivity : AppCompatActivity() {
                 addButton.text = "Максимум!"
                 addButton.isEnabled = false
             }
+        }
+
+        val button = findViewById<Button>(R.id.buttonTask)
+        button.setOnClickListener {
+            val intent = Intent(this, IntentActivity::class.java)
+            intent.putExtra("key1", "Hello, Second Activity")
+            startActivity(intent)
+        }
+
+        val button2 = findViewById<Button>(R.id.buttonTask2)
+        button2.setOnClickListener {
+            val  intent = Intent(this, MaimActivity::class.java)
+            startActivity(intent)
+        }
+
+        val button3 = findViewById<Button>(R.id.buttonTassk3)
+        button3.setOnClickListener {
+            val intent = Intent(this, MaikActivity::class.java)
+            startActivity(intent)
+        }
+
+        val button4 = findViewById<Button>(R.id.buttonTask4)
+        button4.setOnClickListener {
+            val intent = Intent(this, MaisActivity::class.java)
+            startActivity(intent)
+        }
+
+        val button5 = findViewById<Button>(R.id.buttonTask5)
+        button5.setOnClickListener {
+            val intent = Intent(this, MaicActivity::class.java)
+            startActivity(intent)
+        }
+
+        fun addFragment(fragment: Fragment) {
+            val fragmentManager = supportFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+
+            fragmentTransaction.replace(R.id.fragment_container, fragment)
+
+            fragmentTransaction.commit()
         }
     }
 
