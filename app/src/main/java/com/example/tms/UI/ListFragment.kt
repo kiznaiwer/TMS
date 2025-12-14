@@ -12,7 +12,7 @@ import kotlin.getValue
 class ListFragment: Fragment() {
     private var _binding: FragmentListBinding? = null
     private val binding get() = _binding!!
-    private val args: ListFragmentArgs by navArgs()
+    private val args: ListFragmentArgs by navArgs()  //принятие обьекта
 
 
     override fun onCreateView(
@@ -26,8 +26,7 @@ class ListFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (args.message.text == "") binding.textV.text = "Пусто"
-        else binding.textV.text = args.message.text
+        binding.textV.text = args.message.text
     }
 
     override fun onDestroyView() {

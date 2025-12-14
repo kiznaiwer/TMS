@@ -7,4 +7,4 @@ import kotlinx.parcelize.Parcelize
 data class UserMessage(
     val text: String,
     val timeStamp: Long
-): Parcelable
+): Parcelable  // для передачи обьектов

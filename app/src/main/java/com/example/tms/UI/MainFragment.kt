@@ -26,12 +26,12 @@ class MainFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.button.setOnClickListener {
-            val text = binding.inputText.editText
+            val text = binding.inputText.editText   // проверка на мусор
                 ?.text
                 ?.toString()
                 ?.trim()
                 ?.takeIf { it.isNotEmpty() }
-                ?: return@setOnClickListener
+                ?: return@setOnClickListener   // флаг для выхода из лямбды, а не из функции
             val message = UserMessage(
                 text = binding.Hint.text.toString(),
                 timeStamp = System.currentTimeMillis()
